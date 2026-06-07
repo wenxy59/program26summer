@@ -2,7 +2,7 @@
 
 ## 1. Research Background
 
-Large language model agents are increasingly used as scientific assistants: they plan, call tools, generate artifacts, and revise their outputs after verification. Synthetic biology is a good teaching domain for this idea because many tasks are concrete and easy to check automatically. For example, a DNA design can be verified by translation, GC content, forbidden motif scans, and simple synthesis-risk proxies.
+Large language model agents are increasingly used as scientific assistants: they plan, call tools, generate artifacts, and revise their outputs after verification. Synthetic biology is a important and realistic domain for this idea because many tasks are concrete and easy to check automatically. For example, a DNA design can be verified by translation, GC content, forbidden motif scans, and simple synthesis-risk proxies.
 
 This project is a small, reproducible version of a biological design benchmark. It is intentionally separate from any larger research codebase. The goal is not to reproduce a full research system, but to let you experience and finish the full loop:
 
