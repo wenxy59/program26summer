@@ -4,7 +4,7 @@
 
 Large language model agents are increasingly used as scientific assistants: they plan, call tools, generate artifacts, and revise their outputs after verification. Synthetic biology is a good teaching domain for this idea because many tasks are concrete and easy to check automatically. For example, a DNA design can be verified by translation, GC content, forbidden motif scans, and simple synthesis-risk proxies.
 
-This mini-project is a small, reproducible version of a biological design benchmark. It is intentionally separate from any larger research codebase. The goal is not to reproduce a full research system, but to let students experience the full loop:
+This project is a small, reproducible version of a biological design benchmark. It is intentionally separate from any larger research codebase. The goal is not to reproduce a full research system, but to let you experience and finish the full loop:
 
 1. Define small biological design tasks.
 2. Write machine-checkable hard constraints.
@@ -16,7 +16,7 @@ The required part of the project focuses on dataset construction and grading. Th
 
 ## 2. Reference Starting Points
 
-Students can start from the following topics. Reading every paper is not required for the mandatory demo.
+You can start from the following topics. Reading every paper is not required for the mandatory demo.
 
 1. Codon Adaptation Index: Sharp and Li, 1987.
 2. RBS Calculator and translation initiation design: Salis et al., 2009.
@@ -26,7 +26,7 @@ Students can start from the following topics. Reading every paper is not require
 
 ## 3. Project Goal
 
-Build a toy benchmark for multi-objective biological sequence design and test simple agents on it.
+Build a benchmark for multi-objective biological sequence design and test simple agents on it.
 
 The benchmark tasks cover:
 
@@ -35,8 +35,6 @@ The benchmark tasks cover:
 - infeasibility detection;
 - candidate selection under hard constraints;
 - Pareto-style trade-offs between soft objectives.
-
-The demo is fully local and deterministic. It does not require GPU, network access, conda, OpenAI keys, or the full SynBioCrow repository.
 
 ## 4. Mandatory Tasks
 
@@ -55,7 +53,7 @@ Each task includes:
 - optional soft objectives;
 - a level tag: `mandatory` or `advanced`.
 
-Students should explain what each task is asking for and what makes the answer valid.
+You should explain what each task is asking for and what makes the answer valid.
 
 ### Task 2: Run the Grader on Gold Solutions
 
@@ -106,7 +104,7 @@ The demo compares three deterministic baselines:
 - `tool`: a simple tool-using baseline;
 - `repair`: a verifier-guided baseline that enumerates alternatives when needed.
 
-Students should inspect which tasks each baseline passes or fails.
+You should inspect which tasks each baseline passes or fails.
 
 ### Optional B: Analyze Pareto Trade-Offs
 
@@ -120,7 +118,7 @@ This prints Pareto fronts for candidate-selection tasks. Students should explain
 
 ### Optional C: Add an LLM Agent
 
-This is optional and not needed for reproducibility. Students may add an LLM wrapper that:
+This is optional but recommended. You may add an LLM wrapper that:
 
 1. reads a task prompt;
 2. proposes an answer;
