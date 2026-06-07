@@ -1,0 +1,177 @@
+[
+  {
+    "task_id": "mini_design_cds_moderate_gc_001",
+    "level": "mandatory",
+    "category": "cds_design",
+    "prompt": "Design a DNA coding sequence for protein MAKEL. Keep GC moderate, avoid EcoRI and BamHI, and do not create long homopolymers.",
+    "inputs": {
+      "protein": "MAKEL"
+    },
+    "hard_constraints": [
+      {"constraint_id": "translation", "type": "translation_equals", "protein": "MAKEL"},
+      {"constraint_id": "gc_moderate", "type": "gc_range", "min": 0.4, "max": 0.6},
+      {"constraint_id": "no_common_sites", "type": "motif_absent", "motifs": ["GAATTC", "GGATCC"]},
+      {"constraint_id": "homopolymer", "type": "homopolymer_max", "max": 3}
+    ],
+    "soft_objectives": [
+      {"objective_id": "high_cai_proxy", "type": "maximize", "metric": "cai_proxy"},
+      {"objective_id": "near_50_gc", "type": "target", "metric": "gc", "target": 0.5}
+    ]
+  },
+  {
+    "task_id": "mini_repair_ecori_preserve_translation_001",
+    "level": "mandatory",
+    "category": "repair",
+    "prompt": "The first reverse translation of protein MEF creates an EcoRI site. Repair the CDS while preserving the protein.",
+    "inputs": {
+      "protein": "MEF",
+      "bad_sequence": "ATGGAATTC"
+    },
+    "hard_constraints": [
+      {"constraint_id": "translation", "type": "translation_equals", "protein": "MEF"},
+      {"constraint_id": "gc_ok", "type": "gc_range", "min": 0.35, "max": 0.7},
+      {"constraint_id": "no_ecori", "type": "motif_absent", "motifs": ["GAATTC"]},
+      {"constraint_id": "homopolymer", "type": "homopolymer_max", "max": 3}
+    ],
+    "soft_objectives": [
+      {"objective_id": "high_cai_proxy", "type": "maximize", "metric": "cai_proxy"}
+    ]
+  },
+  {
+    "task_id": "mini_nl_clone_ready_implicit_001",
+    "level": "mandatory",
+    "category": "implicit_constraints",
+    "prompt": "Make a clone-ready E. coli CDS for peptide MGAES. Clone-ready means moderate GC, no common restriction sites, and no long single-base runs.",
+    "inputs": {
+      "protein": "MGAES"
+    },
+    "hard_constraints": [
+      {"constraint_id": "translation", "type": "translation_equals", "protein": "MGAES"},
+      {"constraint_id": "gc_clone_ready", "type": "gc_range", "min": 0.4, "max": 0.65},
+      {"constraint_id": "no_re_sites", "type": "motif_absent", "motifs": ["GAATTC", "GGATCC", "GGTCTC", "CGTCTC"]},
+      {"constraint_id": "homopolymer", "type": "homopolymer_max", "max": 5}
+    ],
+    "soft_objectives": [
+      {"objective_id": "high_cai_proxy", "type": "maximize", "metric": "cai_proxy"}
+    ]
+  },
+  {
+    "task_id": "mini_infeasible_gly_low_gc_001",
+    "level": "mandatory",
+    "category": "infeasibility",
+    "prompt": "Design a CDS for peptide GG with GC below 30 percent. If the request is impossible, report infeasible instead of forcing a bad sequence.",
+    "inputs": {
+      "protein": "GG"
+    },
+    "hard_constraints": [
+      {"constraint_id": "must_report_infeasible", "type": "status_equals", "expected": "infeasible"}
+    ],
+    "soft_objectives": []
+  },
+  {
+    "task_id": "mini_pareto_cds_panel_001",
+    "level": "advanced",
+    "category": "pareto_cds_selection",
+    "prompt": "Choose one anonymous CDS candidate for protein MAKEL. It must satisfy the hard biological constraints, and the chosen candidate should be Pareto-optimal over codon preference, GC closeness to 50 percent, and homopolymer length.",
+    "inputs": {
+      "candidates": {
+        "C01": {"sequence": "ATGGCGAAAGAACTG", "gc": 0.4667, "cai_proxy": 1.0, "homopolymer": 3},
+        "C02": {"sequence": "ATGGCCAAAGAATTG", "gc": 0.4, "cai_proxy": 0.86, "homopolymer": 3},
+        "C03": {"sequence": "ATGGCAAAGGAGCTC", "gc": 0.6, "cai_proxy": 0.79, "homopolymer": 2},
+        "C04": {"sequence": "ATGGCGAAAGAATTC", "gc": 0.4667, "cai_proxy": 0.8, "homopolymer": 3}
+      }
+    },
+    "hard_constraints": [
+      {"constraint_id": "translation", "type": "translation_equals", "protein": "MAKEL"},
+      {"constraint_id": "gc_band", "type": "gc_range", "min": 0.4, "max": 0.6},
+      {"constraint_id": "no_ecori_bamhi", "type": "motif_absent", "motifs": ["GAATTC", "GGATCC"]},
+      {"constraint_id": "homopolymer", "type": "homopolymer_max", "max": 3},
+      {"constraint_id": "pareto", "type": "candidate_pareto_optimal"},
+      {"constraint_id": "rationale", "type": "rationale_present"}
+    ],
+    "soft_objectives": [
+      {"objective_id": "high_cai_proxy", "type": "maximize", "metric": "cai_proxy"},
+      {"objective_id": "near_50_gc", "type": "target", "metric": "gc", "target": 0.5},
+      {"objective_id": "short_homopolymer", "type": "minimize", "metric": "homopolymer"}
+    ]
+  },
+  {
+    "task_id": "mini_pareto_expression_panel_001",
+    "level": "advanced",
+    "category": "pareto_expression_selection",
+    "prompt": "Select a promoter-RBS construct that lands near the target expression band while remaining synthesis-friendly and free of forbidden sites.",
+    "inputs": {
+      "candidates": {
+        "PR01": {"tir": 9000, "synth": 88, "forbidden_site": false},
+        "PR02": {"tir": 6100, "synth": 72, "forbidden_site": false},
+        "PR03": {"tir": 5900, "synth": 85, "forbidden_site": true},
+        "PR04": {"tir": 7000, "synth": 80, "forbidden_site": false}
+      }
+    },
+    "hard_constraints": [
+      {"constraint_id": "tir_band", "type": "candidate_metric_range", "metric": "tir", "min": 4500, "max": 7500},
+      {"constraint_id": "synth_min", "type": "candidate_metric_min", "metric": "synth", "min": 70},
+      {"constraint_id": "no_forbidden", "type": "candidate_metric_equals", "metric": "forbidden_site", "expected": false},
+      {"constraint_id": "pareto", "type": "candidate_pareto_optimal"},
+      {"constraint_id": "rationale", "type": "rationale_present"}
+    ],
+    "soft_objectives": [
+      {"objective_id": "near_target_tir", "type": "target", "metric": "tir", "target": 6000},
+      {"objective_id": "high_synth", "type": "maximize", "metric": "synth"}
+    ]
+  },
+  {
+    "task_id": "mini_pareto_rbs_pair_001",
+    "level": "advanced",
+    "category": "pareto_rbs_pair_selection",
+    "prompt": "Choose an RBS pair for a two-gene cassette. Both genes need acceptable TIR, the pair should be orthogonal, and synthesis score should stay acceptable.",
+    "inputs": {
+      "candidates": {
+        "RP01": {"tir_gene1": 9000, "tir_gene2": 6500, "shared_hexamer": 0, "synth": 90},
+        "RP02": {"tir_gene1": 6000, "tir_gene2": 5000, "shared_hexamer": 0, "synth": 65},
+        "RP03": {"tir_gene1": 6100, "tir_gene2": 4800, "shared_hexamer": 0, "synth": 75},
+        "RP04": {"tir_gene1": 6200, "tir_gene2": 4700, "shared_hexamer": 1, "synth": 82}
+      }
+    },
+    "hard_constraints": [
+      {"constraint_id": "tir1_band", "type": "candidate_metric_range", "metric": "tir_gene1", "min": 4500, "max": 7500},
+      {"constraint_id": "tir2_band", "type": "candidate_metric_range", "metric": "tir_gene2", "min": 3000, "max": 7000},
+      {"constraint_id": "orthogonal", "type": "candidate_metric_equals", "metric": "shared_hexamer", "expected": 0},
+      {"constraint_id": "synth_min", "type": "candidate_metric_min", "metric": "synth", "min": 70},
+      {"constraint_id": "pareto", "type": "candidate_pareto_optimal"},
+      {"constraint_id": "rationale", "type": "rationale_present"}
+    ],
+    "soft_objectives": [
+      {"objective_id": "near_tir1", "type": "target", "metric": "tir_gene1", "target": 6000},
+      {"objective_id": "near_tir2", "type": "target", "metric": "tir_gene2", "target": 5000},
+      {"objective_id": "high_synth", "type": "maximize", "metric": "synth"}
+    ]
+  },
+  {
+    "task_id": "mini_pareto_mini_protein_panel_001",
+    "level": "advanced",
+    "category": "pareto_protein_selection",
+    "prompt": "Select one mini-protein variant whose predicted pI, molecular weight, and GRAVY score fall in acceptable bands. Prefer variants closest to neutral pI and moderate hydrophobicity.",
+    "inputs": {
+      "candidates": {
+        "P01": {"pi": 9.5, "mw": 1000, "gravy": 1.2},
+        "P02": {"pi": 6.4, "mw": 1100, "gravy": -0.2},
+        "P03": {"pi": 6.5, "mw": 900, "gravy": -0.7},
+        "P04": {"pi": 5.0, "mw": 1200, "gravy": 0.1}
+      }
+    },
+    "hard_constraints": [
+      {"constraint_id": "pi_band", "type": "candidate_metric_range", "metric": "pi", "min": 5.8, "max": 7.4},
+      {"constraint_id": "mw_band", "type": "candidate_metric_range", "metric": "mw", "min": 850, "max": 1300},
+      {"constraint_id": "gravy_band", "type": "candidate_metric_range", "metric": "gravy", "min": -0.8, "max": 0.5},
+      {"constraint_id": "pareto", "type": "candidate_pareto_optimal"},
+      {"constraint_id": "rationale", "type": "rationale_present"}
+    ],
+    "soft_objectives": [
+      {"objective_id": "near_neutral_pi", "type": "target", "metric": "pi", "target": 6.8},
+      {"objective_id": "moderate_gravy", "type": "target", "metric": "gravy", "target": 0.0},
+      {"objective_id": "larger_mw", "type": "maximize", "metric": "mw"}
+    ]
+  }
+]
+

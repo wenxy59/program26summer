@@ -1,0 +1,35 @@
+{
+  "mini_design_cds_moderate_gc_001": {
+    "sequence": "ATGGCGAAAGAACTG",
+    "rationale": "The CDS translates to MAKEL, has moderate GC, and avoids EcoRI/BamHI."
+  },
+  "mini_repair_ecori_preserve_translation_001": {
+    "sequence": "ATGGAGTTC",
+    "rationale": "GAGTTT still encodes EF but breaks the GAATTC EcoRI motif."
+  },
+  "mini_nl_clone_ready_implicit_001": {
+    "sequence": "ATGGGTGCAGAAAGC",
+    "rationale": "This CDS translates to MGAES and satisfies the clone-ready constraints."
+  },
+  "mini_infeasible_gly_low_gc_001": {
+    "status": "infeasible",
+    "violated_pair": ["glycine_codon_gc_floor", "requested_gc_below_0.30"],
+    "rationale": "Every glycine codon starts with GG, so a two-glycine CDS cannot have GC below 30 percent."
+  },
+  "mini_pareto_cds_panel_001": {
+    "selected_candidate": "C03",
+    "rationale": "C03 trades lower codon-preference proxy for a shorter homopolymer while staying feasible and Pareto-optimal."
+  },
+  "mini_pareto_expression_panel_001": {
+    "selected_candidate": "PR04",
+    "rationale": "PR04 is feasible and Pareto-optimal: higher synthesis score than PR02 at the cost of being farther from target TIR."
+  },
+  "mini_pareto_rbs_pair_001": {
+    "selected_candidate": "RP03",
+    "rationale": "RP03 is the feasible orthogonal pair with acceptable TIR bands and synthesis score."
+  },
+  "mini_pareto_mini_protein_panel_001": {
+    "selected_candidate": "P02",
+    "rationale": "P02 satisfies all property bands and is Pareto-optimal over pI closeness, GRAVY closeness, and molecular weight."
+  }
+}
