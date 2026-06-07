@@ -114,7 +114,7 @@ Command:
 python3 run_demo.py --mode pareto-report
 ```
 
-This prints Pareto fronts for candidate-selection tasks. Students should explain why a selected candidate is or is not dominated.
+This prints Pareto fronts for candidate-selection tasks. You should explain why a selected candidate is or is not dominated.
 
 ### Optional C: Add an LLM Agent
 
@@ -125,11 +125,11 @@ This is optional but recommended. You may add an LLM wrapper that:
 3. calls the local grader;
 4. revises the answer based on failed constraints.
 
-The deterministic baselines should remain available so the project can run without API keys.
+The deterministic baselines should remain available so the project can run with or without LLM API keys.
 
 ## 6. Suggested Evaluation Questions
 
-Students can write a short report answering:
+You can write a research report or make a research poster answering:
 
 1. Which constraints are easiest for naive agents?
 2. Which constraints require verification?
@@ -189,7 +189,7 @@ MiniBioDesignBench/
 
 ## 8. Expected Learning Outcome
 
-By the end of the mini-project, students should understand:
+By the end of the mini-project, you will understand:
 
 - how a benchmark task is represented;
 - how hard constraints differ from soft objectives;
