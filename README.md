@@ -16,13 +16,11 @@ The required part of the project focuses on dataset construction and grading. Th
 
 ## 2. Colab Quick Start
 
-If you do not want to configure Python on your own computer or log into a remote Linux server, start from Google Colab:
+If you do not want to configure Python on your own computer or log into a remote Linux server, start from this GitHub-Colab link:
 
-[Open the classroom Colab notebook](https://colab.research.google.com/drive/19YpU3Sfl6JnIM_04A1iXdNdVuqBt4sQS#scrollTo=YLxMYpKP_HnI)
+[Open the MiniBioDesignBench Colab notebook](https://colab.research.google.com/github/wenxy59/program26summer/blob/main/notebooks/MiniBioDesignBench_Colab.ipynb)
 
-GitHub backup link:
-
-[Open the GitHub Colab notebook](https://colab.research.google.com/github/wenxy59/program26summer/blob/main/notebooks/MiniBioDesignBench_Colab.ipynb)
+This link loads the notebook directly from the GitHub `main` branch. When this repository is updated, reopen the link to get the newest version. If you save a Google Drive copy later, treat that copy as your personal workspace.
 
 In Colab, click:
 

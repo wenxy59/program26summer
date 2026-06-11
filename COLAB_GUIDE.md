@@ -18,17 +18,13 @@ MiniBioDesignBench does not need GPU, CUDA, conda, OpenAI keys, or server access
 
 ## Quick Start
 
-Open the classroom notebook:
-
-```text
-https://colab.research.google.com/drive/19YpU3Sfl6JnIM_04A1iXdNdVuqBt4sQS#scrollTo=YLxMYpKP_HnI
-```
-
-GitHub backup notebook:
+Open the GitHub-Colab notebook:
 
 ```text
 https://colab.research.google.com/github/wenxy59/program26summer/blob/main/notebooks/MiniBioDesignBench_Colab.ipynb
 ```
+
+This is the main project notebook. It loads directly from the GitHub `main` branch, so reopening this link gives you the newest notebook after the repository is updated. A Google Drive copy is useful only when you want to save your own edits.
 
 Then click:
 
