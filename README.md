@@ -2,9 +2,9 @@
 
 ## 1. Research Background
 
-Large language model agents are increasingly used as scientific assistants: they plan, call tools, generate artifacts, and revise their outputs after verification. Synthetic biology is a important and realistic domain for this idea because many tasks are concrete and easy to check automatically. For example, a DNA design can be verified by translation, GC content, forbidden motif scans, and simple synthesis-risk proxies.
+Large language model agents are increasingly used as scientific assistants: they plan, call tools, generate artifacts, and revise their outputs after verification. Synthetic biology is a good teaching domain for this idea because many tasks are concrete and easy to check automatically. For example, a DNA design can be verified by translation, GC content, forbidden motif scans, and simple synthesis-risk proxies.
 
-This project is a small, reproducible version of a biological design benchmark. It is intentionally separate from any larger research codebase. The goal is not to reproduce a full research system, but to let you experience and finish the full loop:
+This mini-project is a small, reproducible version of a biological design benchmark. It is intentionally separate from any larger research codebase. The goal is not to reproduce a full research system, but to let students experience the full loop:
 
 1. Define small biological design tasks.
 2. Write machine-checkable hard constraints.
@@ -16,7 +16,7 @@ The required part of the project focuses on dataset construction and grading. Th
 
 ## 2. Reference Starting Points
 
-You can start from the following topics. Reading every paper is not required for the mandatory demo.
+Students can start from the following topics. Reading every paper is not required for the mandatory demo.
 
 1. Codon Adaptation Index: Sharp and Li, 1987.
 2. RBS Calculator and translation initiation design: Salis et al., 2009.
@@ -26,7 +26,7 @@ You can start from the following topics. Reading every paper is not required for
 
 ## 3. Project Goal
 
-Build a benchmark for multi-objective biological sequence design and test simple agents on it.
+Build a toy benchmark for multi-objective biological sequence design and test simple agents on it.
 
 The benchmark tasks cover:
 
@@ -36,7 +36,23 @@ The benchmark tasks cover:
 - candidate selection under hard constraints;
 - Pareto-style trade-offs between soft objectives.
 
-## 4. Mandatory Tasks
+The demo is fully local and deterministic. It does not require GPU, network access, conda, OpenAI keys, or the full SynBioCrow repository.
+
+## 4. Colab Quick Start
+
+Students who do not have a local Python or Linux server environment can run the demo in Google Colab:
+
+[Open the MiniBioDesignBench Colab notebook](https://colab.research.google.com/github/wenxy59/program26summer/blob/main/notebooks/MiniBioDesignBench_Colab.ipynb)
+
+In Colab, click:
+
+```text
+Runtime -> Run all
+```
+
+The notebook clones this repository, runs the gold-solution smoke test, runs deterministic baseline agents, and prints Pareto-front reports. See `COLAB_GUIDE.md` for a short beginner guide.
+
+## 5. Mandatory Tasks
 
 ### Task 1: Understand the Mini Dataset
 
@@ -53,7 +69,7 @@ Each task includes:
 - optional soft objectives;
 - a level tag: `mandatory` or `advanced`.
 
-You should explain what each task is asking for and what makes the answer valid.
+Students should explain what each task is asking for and what makes the answer valid.
 
 ### Task 2: Run the Grader on Gold Solutions
 
@@ -88,7 +104,7 @@ python3 run_demo.py --mode grade-gold
 
 All gold submissions should still pass.
 
-## 5. Optional Advanced Tasks
+## 6. Optional Advanced Tasks
 
 ### Optional A: Run Baseline Agents
 
@@ -104,7 +120,7 @@ The demo compares three deterministic baselines:
 - `tool`: a simple tool-using baseline;
 - `repair`: a verifier-guided baseline that enumerates alternatives when needed.
 
-You should inspect which tasks each baseline passes or fails.
+Students should inspect which tasks each baseline passes or fails.
 
 ### Optional B: Analyze Pareto Trade-Offs
 
@@ -114,22 +130,22 @@ Command:
 python3 run_demo.py --mode pareto-report
 ```
 
-This prints Pareto fronts for candidate-selection tasks. You should explain why a selected candidate is or is not dominated.
+This prints Pareto fronts for candidate-selection tasks. Students should explain why a selected candidate is or is not dominated.
 
 ### Optional C: Add an LLM Agent
 
-This is optional but recommended. You may add an LLM wrapper that:
+This is optional and not needed for reproducibility. Students may add an LLM wrapper that:
 
 1. reads a task prompt;
 2. proposes an answer;
 3. calls the local grader;
 4. revises the answer based on failed constraints.
 
-The deterministic baselines should remain available so the project can run with or without LLM API keys.
+The deterministic baselines should remain available so the project can run without API keys.
 
-## 6. Suggested Evaluation Questions
+## 7. Suggested Evaluation Questions
 
-You can write a research report or make a research poster answering:
+Students can write a short report answering:
 
 1. Which constraints are easiest for naive agents?
 2. Which constraints require verification?
@@ -137,7 +153,7 @@ You can write a research report or make a research poster answering:
 4. In candidate-selection tasks, did the agent choose a Pareto-optimal design?
 5. What failure modes appear most often: wrong translation, wrong GC, forbidden motif, dominated choice, or missing rationale?
 
-## 7. Reproducibility
+## 8. Reproducibility
 
 ### Environment
 
@@ -187,9 +203,9 @@ MiniBioDesignBench/
     └── seq_utils.py
 ```
 
-## 8. Expected Learning Outcome
+## 9. Expected Learning Outcome
 
-By the end of the mini-project, you will understand:
+By the end of the mini-project, students should understand:
 
 - how a benchmark task is represented;
 - how hard constraints differ from soft objectives;
@@ -197,6 +213,6 @@ By the end of the mini-project, you will understand:
 - how tool-using agents differ from direct prompting;
 - why multi-objective biological design often produces trade-offs instead of one obviously best answer.
 
-## 9. License
+## 10. License
 
 This educational mini-project is released under the MIT License. See `LICENSE`.
