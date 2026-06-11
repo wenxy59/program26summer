@@ -18,10 +18,16 @@ MiniBioDesignBench does not need GPU, CUDA, conda, OpenAI keys, or server access
 
 ## Quick Start
 
-Open:
+Open the classroom notebook:
 
 ```text
-https://colab.research.google.com/github/wenxy59/program26summer/blob/colab-demo-notebook-20260611/notebooks/MiniBioDesignBench_Colab.ipynb
+https://colab.research.google.com/drive/19YpU3Sfl6JnIM_04A1iXdNdVuqBt4sQS#scrollTo=YLxMYpKP_HnI
+```
+
+GitHub backup notebook:
+
+```text
+https://colab.research.google.com/github/wenxy59/program26summer/blob/main/notebooks/MiniBioDesignBench_Colab.ipynb
 ```
 
 Then click:
@@ -38,6 +44,35 @@ The notebook will:
 4. run the deterministic baseline agents;
 5. print Pareto-front reports;
 6. show you how to inspect tasks and gold answers.
+
+## Project Path Rules
+
+Colab starts in:
+
+```text
+/content
+```
+
+The notebook clones this repository into:
+
+```text
+/content/program26summer
+```
+
+All project commands should run from `/content/program26summer`.
+
+Important files:
+
+```text
+run_demo.py
+data/tasks.json
+data/gold_submissions.json
+src/grader.py
+src/agents.py
+src/pareto.py
+```
+
+If Colab says a file does not exist, rerun the setup cells and make sure the notebook changed directory to `/content/program26summer`.
 
 ## Expected Smoke Test
 

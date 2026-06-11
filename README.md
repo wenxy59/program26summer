@@ -18,7 +18,11 @@ The required part of the project focuses on dataset construction and grading. Th
 
 If you do not want to configure Python on your own computer or log into a remote Linux server, start from Google Colab:
 
-[Open the MiniBioDesignBench Colab notebook](https://colab.research.google.com/github/wenxy59/program26summer/blob/colab-demo-notebook-20260611/notebooks/MiniBioDesignBench_Colab.ipynb)
+[Open the classroom Colab notebook](https://colab.research.google.com/drive/19YpU3Sfl6JnIM_04A1iXdNdVuqBt4sQS#scrollTo=YLxMYpKP_HnI)
+
+GitHub backup link:
+
+[Open the GitHub Colab notebook](https://colab.research.google.com/github/wenxy59/program26summer/blob/main/notebooks/MiniBioDesignBench_Colab.ipynb)
 
 In Colab, click:
 
@@ -27,6 +31,14 @@ Runtime -> Run all
 ```
 
 The notebook clones this repository, runs the gold-solution smoke test, runs deterministic baseline agents, and prints Pareto-front reports. You do not need GPU, CUDA, conda, OpenAI keys, or server access for the default demo.
+
+In Colab, the project will be cloned to:
+
+```text
+/content/program26summer
+```
+
+All demo commands should be run from that project folder. If a command cannot find `run_demo.py` or `data/tasks.json`, rerun the setup cells in the notebook.
 
 If you are new to Colab, read `COLAB_GUIDE.md` first.
 
