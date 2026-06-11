@@ -21,7 +21,7 @@ MiniBioDesignBench does not need GPU, CUDA, conda, OpenAI keys, or server access
 Open:
 
 ```text
-https://colab.research.google.com/github/wenxy59/program26summer/blob/main/notebooks/MiniBioDesignBench_Colab.ipynb
+https://colab.research.google.com/github/wenxy59/program26summer/blob/colab-demo-notebook-20260611/notebooks/MiniBioDesignBench_Colab.ipynb
 ```
 
 Then click:
@@ -37,7 +37,7 @@ The notebook will:
 3. run the gold-solution smoke test;
 4. run the deterministic baseline agents;
 5. print Pareto-front reports;
-6. show students how to inspect tasks and gold answers.
+6. show you how to inspect tasks and gold answers.
 
 ## Expected Smoke Test
 
@@ -53,9 +53,9 @@ Expected final line:
 Gold submissions: 8/8 pass
 ```
 
-## How Students Save Work
+## How You Save Work
 
-Colab runtimes are temporary. Students should save their edits by one of these methods:
+Colab runtimes are temporary. You should save your edits by one of these methods:
 
 1. Download the zip file created by the final notebook cell.
 2. Save a copy of the notebook to Google Drive.
@@ -72,7 +72,7 @@ If Colab disconnects:
 
 If `git clone` fails:
 
-- check that the GitHub repository is public or that the student is logged into GitHub;
+- check that the GitHub repository is public or that you are logged into GitHub;
 - rerun the clone cell.
 
 If the smoke test fails after editing:
