@@ -40,10 +40,6 @@ All demo commands should be run from that project folder. If a command cannot fi
 
 If you are new to Colab, read `COLAB_GUIDE.md` first.
 
-For a detailed project workflow, including how to extract tasks from papers, build the dataset, validate gold answers, and extend the demo toward a real LLM agent, read:
-
-[MiniBioDesignBench Project Workflow Guide](https://github.com/wenxy59/program26summer/blob/main/STUDENT_WORKFLOW.md)
-
 ## 3. Reference Starting Points
 
 You can start from the following topics. Reading every paper is not required for the mandatory demo.
