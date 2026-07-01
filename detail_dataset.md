@@ -47,8 +47,6 @@ Most tasks follow this JSON schema:
 }
 ```
 
-Evidence-only and protocol-audit tasks omit `output_rna.fasta` and grade structured `result.json` plus `report.md`.
-
 ## 1. `core_conditional`
 
 Meaning:
